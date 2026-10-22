@@ -1,0 +1,5 @@
+# Keep LF line endings everywhere: the code runs on Linux (the Pi) and Roku.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.zip binary
