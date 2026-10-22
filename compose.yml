@@ -1,0 +1,16 @@
+services:
+  multistream:
+    build: .
+    image: multistream:latest
+    ports:
+      - "8080:8080"
+    env_file: .env
+    volumes:
+      # Profiles and My List live here, outside the container, so updates don't erase them.
+      - ./data:/app/data
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"

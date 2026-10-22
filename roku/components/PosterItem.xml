@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- One poster in a row or grid. Shows the title as text until (or if) the image loads. -->
+<component name="PosterItem" extends="Group">
+  <interface>
+    <field id="itemContent" type="node" onChange="onContent" />
+    <field id="width" type="float" onChange="onLayout" />
+    <field id="height" type="float" onChange="onLayout" />
+    <field id="focusPercent" type="float" onChange="onFocus" />
+    <field id="rowListHasFocus" type="boolean" onChange="onFocus" />
+    <field id="gridHasFocus" type="boolean" onChange="onFocus" />
+  </interface>
+  <children>
+    <Rectangle id="placeholder" color="0x1A1D26FF" />
+    <Label id="fallback" color="0xA1A6B3FF" horizAlign="center" vertAlign="center" wrap="true" maxLines="4">
+      <Font role="font" uri="font:BoldSystemFontFile" size="24" />
+    </Label>
+    <Poster id="poster" loadDisplayMode="scaleToFill" />
+    <!-- The focus ring is drawn over the poster's edges, so neighbouring items can't cover it. -->
+    <Group id="ring" opacity="0">
+      <Rectangle id="ringTop" color="0xE5484DFF" />
+      <Rectangle id="ringBottom" color="0xE5484DFF" />
+      <Rectangle id="ringLeft" color="0xE5484DFF" />
+      <Rectangle id="ringRight" color="0xE5484DFF" />
+    </Group>
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/PosterItem.brs" />
+</component>

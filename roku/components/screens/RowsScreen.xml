@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Home, Movies and Shows: a banner for the highlighted title above rows of posters.
+  mode is "home", "movie" or "tv".
+-->
+<component name="RowsScreen" extends="Group">
+  <interface>
+    <field id="mode" type="string" />
+    <field id="profileId" type="integer" />
+    <field id="load" type="boolean" alwaysNotify="true" onChange="onLoad" />
+    <!-- Set by MainScene when My List may have changed. -->
+    <field id="listVersion" type="integer" onChange="onListVersion" />
+    <!-- { mediaType, tmdbId } -->
+    <field id="itemSelected" type="assocarray" alwaysNotify="true" />
+  </interface>
+  <children>
+    <Poster id="backdrop" width="1920" height="1080" loadDisplayMode="scaleToZoom" />
+    <Poster uri="pkg:/images/hero_shade.png" width="1920" height="1080" />
+
+    <Label id="heroTitle" translation="[96, 130]" width="1150" color="0xF5F5F7FF" wrap="true" maxLines="2">
+      <Font role="font" uri="font:BoldSystemFontFile" size="64" />
+    </Label>
+    <Label id="heroMeta" translation="[96, 300]" color="0xA1A6B3FF">
+      <Font role="font" uri="font:SystemFontFile" size="30" />
+    </Label>
+    <Label id="heroDescription" translation="[96, 350]" width="1000" color="0xF5F5F7FF" wrap="true" maxLines="3" lineSpacing="4">
+      <Font role="font" uri="font:SystemFontFile" size="28" />
+    </Label>
+
+    <RowList
+      id="rows"
+      translation="[96, 560]"
+      itemComponentName="PosterItem"
+      numRows="2"
+      itemSize="[1824, 400]"
+      itemSpacing="[0, 24]"
+      rowItemSize="[[220, 330]]"
+      rowItemSpacing="[[24, 0]]"
+      showRowLabel="[true]"
+      rowLabelOffset="[[0, 14]]"
+      rowLabelColor="0xF5F5F7FF"
+      rowFocusAnimationStyle="floatingFocus"
+      vertFocusAnimationStyle="fixedFocus"
+      drawFocusFeedback="false">
+      <Font role="rowLabelFont" uri="font:BoldSystemFontFile" size="32" />
+    </RowList>
+
+    <Label id="status" translation="[96, 480]" width="1728" horizAlign="center" color="0xA1A6B3FF" wrap="true">
+      <Font role="font" uri="font:SystemFontFile" size="32" />
+    </Label>
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/screens/RowsScreen.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/helpers.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/api.brs" />
+</component>

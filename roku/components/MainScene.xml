@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Holds the screens, the left-hand menu and the message bar. Root screens (Home, Movies, Shows,
+  My List, Search, profiles) replace each other; detail screens stack on top and Back pops them.
+-->
+<component name="MainScene" extends="Scene">
+  <interface>
+    <!-- Any screen can set this to show a short message. -->
+    <field id="toast" type="string" alwaysNotify="true" onChange="onToast" />
+    <!-- Bumped whenever My List changes so screens showing it reload. -->
+    <field id="listVersion" type="integer" value="0" />
+  </interface>
+  <children>
+    <Rectangle width="1920" height="1080" color="0x0B0D12FF" />
+    <Group id="screens" />
+
+    <Label id="startup" translation="[160, 440]" width="1600" horizAlign="center" color="0xA1A6B3FF" wrap="true">
+      <Font role="font" uri="font:SystemFontFile" size="34" />
+    </Label>
+
+    <Group id="nav" visible="false">
+      <Rectangle translation="[442, 0]" width="1478" height="1080" color="0x000000A0" />
+      <Rectangle width="440" height="1080" color="0x0B0D12FF" />
+      <Rectangle translation="[440, 0]" width="2" height="1080" color="0x262A35FF" />
+      <Label text="multistream" translation="[80, 80]" color="0xE5484DFF">
+        <Font role="font" uri="font:BoldSystemFontFile" size="44" />
+      </Label>
+      <LabelList
+        id="navList"
+        translation="[60, 220]"
+        itemSize="[340, 70]"
+        itemSpacing="[0, 8]"
+        numRows="6"
+        vertFocusAnimationStyle="floatingFocus"
+        color="0xA1A6B3FF"
+        focusedColor="0xFFFFFFFF"
+        focusBitmapBlendColor="0xE5484DFF">
+        <Font role="font" uri="font:BoldSystemFontFile" size="32" />
+        <Font role="focusedFont" uri="font:BoldSystemFontFile" size="32" />
+      </LabelList>
+      <Label text="Back again to exit" translation="[80, 990]" color="0x6B7080FF">
+        <Font role="font" uri="font:SystemFontFile" size="22" />
+      </Label>
+    </Group>
+
+    <Group id="toastGroup" visible="false" translation="[460, 930]">
+      <Rectangle width="1000" height="96" color="0x1A1D26F2" />
+      <Rectangle width="8" height="96" color="0xE5484DFF" />
+      <Label id="toastLabel" translation="[36, 0]" width="940" height="96" vertAlign="center" color="0xF5F5F7FF" wrap="true" maxLines="2">
+        <Font role="font" uri="font:SystemFontFile" size="28" />
+      </Label>
+    </Group>
+    <Timer id="toastTimer" duration="5" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/helpers.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/api.brs" />
+  <script type="text/brightscript" uri="pkg:/source/generated/config.brs" />
+</component>

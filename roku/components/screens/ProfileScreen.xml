@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- "Who's watching?" Profiles are added and removed from the multistream website. -->
+<component name="ProfileScreen" extends="Group">
+  <interface>
+    <!-- [{ id, name }] from /api/profiles -->
+    <field id="profiles" type="array" onChange="onProfiles" />
+    <field id="currentId" type="integer" />
+    <!-- { id, name } -->
+    <field id="profileChosen" type="assocarray" alwaysNotify="true" />
+  </interface>
+  <children>
+    <Label text="Who's watching?" translation="[0, 230]" width="1920" horizAlign="center" color="0xF5F5F7FF">
+      <Font role="font" uri="font:BoldSystemFontFile" size="64" />
+    </Label>
+    <LabelList
+      id="list"
+      translation="[660, 380]"
+      itemSize="[600, 72]"
+      itemSpacing="[0, 10]"
+      numRows="6"
+      textHorizAlign="center"
+      vertFocusAnimationStyle="floatingFocus"
+      color="0xF5F5F7FF"
+      focusedColor="0xFFFFFFFF"
+      focusBitmapBlendColor="0xE5484DFF">
+      <Font role="font" uri="font:BoldSystemFontFile" size="34" />
+      <Font role="focusedFont" uri="font:BoldSystemFontFile" size="34" />
+    </LabelList>
+    <Label text="Add or remove profiles from the multistream website on your phone or laptop." translation="[0, 960]" width="1920" horizAlign="center" color="0xA1A6B3FF">
+      <Font role="font" uri="font:SystemFontFile" size="26" />
+    </Label>
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/screens/ProfileScreen.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/helpers.brs" />
+</component>

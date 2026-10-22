@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- My List: the current profile's saved titles as a grid of posters. -->
+<component name="GridScreen" extends="Group">
+  <interface>
+    <field id="profileId" type="integer" />
+    <field id="profileName" type="string" />
+    <field id="load" type="boolean" alwaysNotify="true" onChange="onLoad" />
+    <field id="listVersion" type="integer" onChange="onListVersion" />
+    <field id="itemSelected" type="assocarray" alwaysNotify="true" />
+  </interface>
+  <children>
+    <Label id="heading" translation="[96, 70]" color="0xF5F5F7FF">
+      <Font role="font" uri="font:BoldSystemFontFile" size="52" />
+    </Label>
+    <MarkupGrid
+      id="grid"
+      translation="[96, 190]"
+      itemComponentName="PosterItem"
+      numColumns="7"
+      numRows="3"
+      itemSize="[220, 330]"
+      itemSpacing="[24, 40]"
+      vertFocusAnimationStyle="floatingFocus"
+      drawFocusFeedback="false" />
+    <Label id="status" translation="[96, 400]" width="1728" horizAlign="center" color="0xA1A6B3FF" wrap="true">
+      <Font role="font" uri="font:SystemFontFile" size="32" />
+    </Label>
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/screens/GridScreen.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/helpers.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/api.brs" />
+</component>

@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0d12;
+  --color-surface: #141821;
+  --color-surface-2: #1d2331;
+  --color-line: #2a3144;
+  --color-text: #eef1f7;
+  --color-muted: #a3adc2;
+  --color-accent: #e5484d;
+  --color-free: #34d399;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  /* Bigger base text on large screens so a TV across the room is readable. */
+  font-size: clamp(16px, 0.9vw + 8px, 22px);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  overflow-x: hidden;
+}
+
+/* Visible focus for keyboards and TV remotes. */
+:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+/* Horizontal rows scroll with a hidden bar; arrows and D-pad do the work. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Makes one HTTP request to the multistream server off the render thread. -->
+<component name="ApiTask" extends="Task">
+  <interface>
+    <!-- { method: "GET"|"PUT"|"POST"|"DELETE", path: "/api/...", query: {}, body: {}, id: 0 } -->
+    <field id="request" type="assocarray" />
+    <!-- { ok, status, data, error, id } -->
+    <field id="response" type="assocarray" />
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/ApiTask.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/helpers.brs" />
+  <script type="text/brightscript" uri="pkg:/source/generated/config.brs" />
+</component>

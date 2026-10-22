@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- One movie or show: backdrop, details, where to watch, trailer, My List, and similar titles. -->
+<component name="DetailScreen" extends="Group">
+  <interface>
+    <field id="mediaType" type="string" />
+    <field id="tmdbId" type="integer" />
+    <field id="profileId" type="integer" />
+    <field id="load" type="boolean" alwaysNotify="true" onChange="onLoad" />
+    <field id="itemSelected" type="assocarray" alwaysNotify="true" />
+  </interface>
+  <children>
+    <Poster id="backdrop" width="1920" height="1080" loadDisplayMode="scaleToZoom" />
+    <Poster uri="pkg:/images/detail_shade.png" width="1920" height="1080" />
+
+    <Group id="body" visible="false">
+      <Label id="title" translation="[96, 80]" width="1300" color="0xF5F5F7FF" wrap="true" maxLines="2">
+        <Font role="font" uri="font:BoldSystemFontFile" size="60" />
+      </Label>
+      <Label id="meta" translation="[96, 240]" color="0xF5F5F7FF">
+        <Font role="font" uri="font:SystemFontFile" size="30" />
+      </Label>
+      <Label id="genres" translation="[96, 285]" width="1150" color="0xA1A6B3FF">
+        <Font role="font" uri="font:SystemFontFile" size="26" />
+      </Label>
+      <Label id="description" translation="[96, 335]" width="1150" color="0xF5F5F7FF" wrap="true" maxLines="4" lineSpacing="4">
+        <Font role="font" uri="font:SystemFontFile" size="28" />
+      </Label>
+      <Label id="credits" translation="[96, 500]" width="1150" color="0xA1A6B3FF">
+        <Font role="font" uri="font:SystemFontFile" size="26" />
+      </Label>
+      <Label id="cast" translation="[96, 540]" width="1150" color="0xA1A6B3FF">
+        <Font role="font" uri="font:SystemFontFile" size="26" />
+      </Label>
+
+      <Label id="watchNote" translation="[96, 600]" width="640" color="0xA1A6B3FF">
+        <Font role="font" uri="font:SystemFontFile" size="24" />
+      </Label>
+      <LabelList
+        id="actions"
+        translation="[96, 650]"
+        itemSize="[620, 60]"
+        itemSpacing="[0, 8]"
+        numRows="6"
+        vertFocusAnimationStyle="floatingFocus"
+        color="0xF5F5F7FF"
+        focusedColor="0xFFFFFFFF"
+        focusBitmapBlendColor="0xE5484DFF">
+        <Font role="font" uri="font:BoldSystemFontFile" size="28" />
+        <Font role="focusedFont" uri="font:BoldSystemFontFile" size="28" />
+      </LabelList>
+
+      <Label id="similarHeading" text="More like this" translation="[800, 600]" color="0xF5F5F7FF">
+        <Font role="font" uri="font:BoldSystemFontFile" size="30" />
+      </Label>
+      <RowList
+        id="similar"
+        translation="[800, 655]"
+        itemComponentName="PosterItem"
+        numRows="1"
+        itemSize="[1024, 320]"
+        rowItemSize="[[200, 300]]"
+        rowItemSpacing="[[20, 0]]"
+        showRowLabel="[false]"
+        rowFocusAnimationStyle="floatingFocus"
+        drawFocusFeedback="false" />
+    </Group>
+
+    <Label id="status" translation="[96, 480]" width="1728" horizAlign="center" color="0xA1A6B3FF" wrap="true">
+      <Font role="font" uri="font:SystemFontFile" size="32" />
+    </Label>
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/screens/DetailScreen.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/helpers.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/api.brs" />
+</component>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Search: an on-screen keyboard on the left, results on the right as you type. -->
+<component name="SearchScreen" extends="Group">
+  <interface>
+    <field id="load" type="boolean" alwaysNotify="true" onChange="onLoad" />
+    <field id="itemSelected" type="assocarray" alwaysNotify="true" />
+  </interface>
+  <children>
+    <Label text="Search" translation="[96, 70]" color="0xF5F5F7FF">
+      <Font role="font" uri="font:BoldSystemFontFile" size="52" />
+    </Label>
+    <MiniKeyboard id="keyboard" translation="[96, 190]" />
+    <MarkupGrid
+      id="results"
+      translation="[800, 190]"
+      itemComponentName="PosterItem"
+      numColumns="4"
+      numRows="2"
+      itemSize="[220, 330]"
+      itemSpacing="[24, 40]"
+      vertFocusAnimationStyle="floatingFocus"
+      drawFocusFeedback="false" />
+    <Label id="status" translation="[800, 400]" width="1000" horizAlign="center" color="0xA1A6B3FF" wrap="true">
+      <Font role="font" uri="font:SystemFontFile" size="30" />
+    </Label>
+    <!-- Waits for a short pause in typing before searching. -->
+    <Timer id="debounce" duration="0.6" />
+  </children>
+  <script type="text/brightscript" uri="pkg:/components/screens/SearchScreen.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/helpers.brs" />
+  <script type="text/brightscript" uri="pkg:/components/lib/api.brs" />
+</component>
